@@ -1,0 +1,999 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - CSReviewer | Civil Service Exam Reviewer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            width: 100%;
+            height: 100%;
+            font-family: 'Poppins', sans-serif;
+            background: white;
+        }
+
+        body {
+            display: flex;
+            overflow: hidden;
+        }
+
+        /* ===== Left Side - Branding & Features ===== */
+        .signup-container {
+            display: flex;
+            width: 100%;
+            height: 100vh;
+        }
+
+        .left-section {
+            flex: 1;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 50px 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Wave and dot pattern background */
+        .left-section::before {
+            content: '';
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+            background-size: 50px 50px;
+            top: -150px;
+            right: -150px;
+            pointer-events: none;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .left-section::after {
+            content: '';
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+            background-size: 60px 60px;
+            bottom: -100px;
+            left: -100px;
+            pointer-events: none;
+            animation: float 8s ease-in-out infinite reverse;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        .branding-section {
+            position: relative;
+            z-index: 1;
+        }
+
+        .logo-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 60px;
+        }
+
+        .logo-icon {
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: #667eea;
+            font-weight: 700;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .logo-text {
+            font-size: 18px;
+            font-weight: 700;
+            color: white;
+        }
+
+        .signup-heading {
+            font-size: 3rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 16px;
+            line-height: 1.1;
+        }
+
+        .signup-description {
+            font-size: 1.05rem;
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.6;
+            margin-bottom: 45px;
+            max-width: 420px;
+        }
+
+        /* Features List */
+        .features-list {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 22px;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+        }
+
+        .feature-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            flex-shrink: 0;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .feature-content h3 {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: white;
+            margin-bottom: 4px;
+        }
+
+        .feature-content p {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.85);
+            line-height: 1.4;
+        }
+
+        /* Book Stack Illustration */
+        .illustration-container {
+            position: relative;
+            z-index: 1;
+            margin-top: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+        }
+
+        .book-stack {
+            position: relative;
+            width: 140px;
+            height: 160px;
+        }
+
+        .book {
+            position: absolute;
+            background: white;
+            border-radius: 6px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .book-1 {
+            width: 110px;
+            height: 28px;
+            bottom: 90px;
+            left: 15px;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.85) 100%);
+            transform: rotate(-10deg);
+        }
+
+        .book-2 {
+            width: 115px;
+            height: 28px;
+            bottom: 55px;
+            left: 8px;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(255, 255, 255, 0.9) 100%);
+            transform: rotate(5deg);
+        }
+
+        .book-3 {
+            width: 120px;
+            height: 28px;
+            bottom: 20px;
+            left: 0px;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0.95) 100%);
+            transform: rotate(-3deg);
+        }
+
+        .graduation-cap {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90px;
+            height: 55px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 50% 50% 45% 45%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            color: #667eea;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        /* ===== Right Side - Registration Form ===== */
+        .right-section {
+            flex: 1;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px;
+            overflow-y: auto;
+        }
+
+        .signup-card {
+            width: 100%;
+            max-width: 450px;
+            background: white;
+            border-radius: 20px;
+            padding: 50px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+        }
+
+        .signup-card-header {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .signup-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 8px;
+        }
+
+        .signup-subtitle {
+            font-size: 0.95rem;
+            color: #777;
+            line-height: 1.5;
+        }
+
+        /* Form Group */
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: #333;
+            margin-bottom: 8px;
+        }
+
+        /* Two Column Form Row */
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-bottom: 18px;
+        }
+
+        .form-row .form-group {
+            margin-bottom: 0;
+        }
+
+        .input-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .input-icon {
+            position: absolute;
+            left: 14px;
+            font-size: 18px;
+            color: #999;
+            pointer-events: none;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 12px 16px 12px 45px;
+            border: 1.5px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 0.95rem;
+            font-family: 'Poppins', sans-serif;
+            transition: all 0.3s ease;
+            background: #fafafa;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: #667eea;
+            background: white;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .form-input::placeholder {
+            color: #bbb;
+        }
+
+        /* Password Field Special Styling */
+        .password-field-wrapper {
+            position: relative;
+        }
+
+        .password-toggle {
+            position: absolute;
+            right: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            font-size: 18px;
+            color: #999;
+            cursor: pointer;
+            transition: color 0.3s ease;
+            z-index: 2;
+        }
+
+        .password-toggle:hover {
+            color: #667eea;
+        }
+
+        /* Terms Text */
+        .terms-text {
+            font-size: 0.8rem;
+            color: #777;
+            margin: 20px 0;
+            line-height: 1.5;
+            text-align: center;
+        }
+
+        .terms-text a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .terms-text a:hover {
+            color: #764ba2;
+        }
+
+        /* Sign Up Button */
+        .signup-button {
+            width: 100%;
+            padding: 12px 16px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: 600;
+            font-family: 'Poppins', sans-serif;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 20px;
+            margin-top: 10px;
+        }
+
+        .signup-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        .signup-button:active {
+            transform: translateY(0);
+        }
+
+        /* Divider */
+        .divider {
+            text-align: center;
+            margin: 24px 0;
+            position: relative;
+        }
+
+        .divider::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: #e0e0e0;
+        }
+
+        .divider-text {
+            background: white;
+            padding: 0 10px;
+            color: #999;
+            font-size: 0.85rem;
+            position: relative;
+        }
+
+        /* Google Sign-Up Button */
+        .google-button {
+            width: 100%;
+            padding: 12px 16px;
+            background: white;
+            color: #333;
+            border: 1.5px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            font-family: 'Poppins', sans-serif;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .google-button:hover {
+            background: #f9f9f9;
+            border-color: #d0d0d0;
+            transform: translateY(-2px);
+        }
+
+        .google-button:active {
+            background: #f0f0f0;
+            transform: translateY(0);
+        }
+
+        /* Login Link */
+        .login-link {
+            text-align: center;
+            font-size: 0.9rem;
+            color: #777;
+        }
+
+        .login-link a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .login-link a:hover {
+            color: #764ba2;
+        }
+
+        /* ===== Responsive Design ===== */
+        @media (max-width: 1024px) {
+            .signup-heading {
+                font-size: 2.5rem;
+            }
+
+            .left-section {
+                padding: 40px 30px;
+            }
+
+            .signup-card {
+                padding: 40px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .signup-container {
+                flex-direction: column;
+            }
+
+            .left-section {
+                flex: 0.9;
+                padding: 35px 25px;
+                justify-content: center;
+            }
+
+            .right-section {
+                flex: 1;
+                padding: 25px 20px;
+                background: #f5f5f5;
+            }
+
+            .logo-brand {
+                margin-bottom: 35px;
+            }
+
+            .signup-heading {
+                font-size: 2.2rem;
+                margin-bottom: 12px;
+            }
+
+            .signup-description {
+                font-size: 0.95rem;
+                margin-bottom: 30px;
+            }
+
+            .features-list {
+                gap: 16px;
+            }
+
+            .feature-icon {
+                width: 45px;
+                height: 45px;
+                font-size: 20px;
+            }
+
+            .feature-content h3 {
+                font-size: 0.95rem;
+            }
+
+            .feature-content p {
+                font-size: 0.85rem;
+            }
+
+            .illustration-container {
+                margin-top: 25px;
+            }
+
+            .book-stack {
+                width: 120px;
+                height: 140px;
+            }
+
+            .signup-card {
+                max-width: 100%;
+                margin-top: 20px;
+                border-radius: 16px;
+            }
+
+            .signup-title {
+                font-size: 1.6rem;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr 1fr;
+                gap: 12px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .signup-container {
+                height: auto;
+                min-height: 100vh;
+            }
+
+            .left-section {
+                flex: none;
+                padding: 25px 20px;
+                min-height: 45vh;
+            }
+
+            .right-section {
+                flex: none;
+                padding: 20px;
+                background: white;
+                min-height: 55vh;
+            }
+
+            .signup-heading {
+                font-size: 1.8rem;
+            }
+
+            .signup-description {
+                font-size: 0.9rem;
+                max-width: 100%;
+            }
+
+            .features-list {
+                gap: 12px;
+            }
+
+            .feature-item {
+                gap: 12px;
+            }
+
+            .feature-icon {
+                width: 40px;
+                height: 40px;
+                font-size: 18px;
+            }
+
+            .feature-content h3 {
+                font-size: 0.9rem;
+            }
+
+            .feature-content p {
+                font-size: 0.75rem;
+            }
+
+            .illustration-container {
+                margin-top: 20px;
+            }
+
+            .book-stack {
+                width: 100px;
+                height: 120px;
+            }
+
+            .signup-card {
+                padding: 25px 20px;
+                max-width: 100%;
+            }
+
+            .signup-title {
+                font-size: 1.4rem;
+            }
+
+            .signup-subtitle {
+                font-size: 0.85rem;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr 1fr;
+                gap: 10px;
+                margin-bottom: 14px;
+            }
+
+            .form-group {
+                margin-bottom: 14px;
+            }
+
+            .form-group label {
+                font-size: 0.85rem;
+            }
+
+            .form-input {
+                padding: 11px 14px 11px 40px;
+                font-size: 0.9rem;
+            }
+
+            .input-icon {
+                font-size: 16px;
+            }
+
+            .password-toggle {
+                font-size: 16px;
+            }
+
+            .signup-button {
+                padding: 11px 14px;
+                font-size: 0.95rem;
+                margin-top: 8px;
+            }
+
+            .google-button {
+                padding: 11px 14px;
+                font-size: 0.85rem;
+            }
+
+            .terms-text {
+                font-size: 0.75rem;
+                margin: 15px 0;
+            }
+
+            .divider {
+                margin: 18px 0;
+            }
+
+            .login-link {
+                font-size: 0.85rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="signup-container">
+        <!-- Left Section - Branding & Features -->
+        <div class="left-section">
+            <div class="branding-section">
+                <!-- Logo & Brand -->
+                <div class="logo-brand">
+                    <div class="logo-icon">📚</div>
+                    <div class="logo-text">CSReviewer</div>
+                </div>
+
+                <!-- Main Heading -->
+                <h1 class="signup-heading">Create an Account</h1>
+
+                <!-- Description -->
+                <p class="signup-description">Join our platform to review, practice, and pass the Civil Service Examination. Start your learning journey today!</p>
+
+                <!-- Features List -->
+                <div class="features-list">
+                    <div class="feature-item">
+                        <div class="feature-icon">📖</div>
+                        <div class="feature-content">
+                            <h3>Quality Lessons</h3>
+                            <p>Easy to understand study materials</p>
+                        </div>
+                    </div>
+
+                    <div class="feature-item">
+                        <div class="feature-icon">✏️</div>
+                        <div class="feature-content">
+                            <h3>Practice Quizzes</h3>
+                            <p>Test your knowledge with quizzes</p>
+                        </div>
+                    </div>
+
+                    <div class="feature-item">
+                        <div class="feature-icon">📊</div>
+                        <div class="feature-content">
+                            <h3>Track Progress</h3>
+                            <p>Monitor your scores and improvement</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Book Stack Illustration -->
+            <div class="illustration-container">
+                <div class="book-stack">
+                    <div class="book book-1"></div>
+                    <div class="book book-2"></div>
+                    <div class="book book-3"></div>
+                    <div class="graduation-cap">🎓</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Section - Sign Up Form -->
+        <div class="right-section">
+            <div class="signup-card">
+                <!-- Card Header -->
+                <div class="signup-card-header">
+                    <h2 class="signup-title">Create Your Account!</h2>
+                    <p class="signup-subtitle">Enter your details below to get started.</p>
+                </div>
+
+                <!-- Sign Up Form -->
+                <form onsubmit="handleSignUp(event)">
+                    <!-- First Name and Last Name Row -->
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="firstName">First Name</label>
+                            <div class="input-wrapper">
+                                <input
+                                    type="text"
+                                    id="firstName"
+                                    class="form-input"
+                                    placeholder="John"
+                                    required
+                                >
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="lastName">Last Name</label>
+                            <div class="input-wrapper">
+                                <input
+                                    type="text"
+                                    id="lastName"
+                                    class="form-input"
+                                    placeholder="Doe"
+                                    required
+                                >
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Email Input -->
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <div class="input-wrapper">
+                            <span class="input-icon">✉️</span>
+                            <input
+                                type="email"
+                                id="email"
+                                class="form-input"
+                                placeholder="you@example.com"
+                                required
+                            >
+                        </div>
+                    </div>
+
+                    <!-- Username Input -->
+                    <div class="form-group">
+                        <label for="username">Create a unique username</label>
+                        <div class="input-wrapper">
+                            <span class="input-icon">👤</span>
+                            <input
+                                type="text"
+                                id="username"
+                                class="form-input"
+                                placeholder="johndoe123"
+                                required
+                            >
+                        </div>
+                    </div>
+
+                    <!-- Password and Confirm Password Row -->
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <div class="password-field-wrapper">
+                                <div class="input-wrapper">
+                                    <span class="input-icon">🔒</span>
+                                    <input
+                                        type="password"
+                                        id="password"
+                                        class="form-input"
+                                        placeholder="••••••••"
+                                        required
+                                    >
+                                    <button
+                                        type="button"
+                                        class="password-toggle"
+                                        onclick="togglePasswordVisibility('password')"
+                                    >
+                                        👁️
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="confirmPassword">Confirm Password</label>
+                            <div class="password-field-wrapper">
+                                <div class="input-wrapper">
+                                    <span class="input-icon">🔒</span>
+                                    <input
+                                        type="password"
+                                        id="confirmPassword"
+                                        class="form-input"
+                                        placeholder="••••••••"
+                                        required
+                                    >
+                                    <button
+                                        type="button"
+                                        class="password-toggle"
+                                        onclick="togglePasswordVisibility('confirmPassword')"
+                                    >
+                                        👁️
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Terms Text -->
+                    <p class="terms-text">
+                        By signing up, you agree to our <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>.
+                    </p>
+
+                    <!-- Sign Up Button -->
+                    <button type="submit" class="signup-button">
+                        ✨ Sign Up
+                    </button>
+                </form>
+
+                <!-- Divider -->
+                <div class="divider">
+                    <span class="divider-text">or</span>
+                </div>
+
+                <!-- Google Sign-Up Button -->
+                <button class="google-button" onclick="handleGoogleSignUp()">
+                    <span>🔵</span> Sign up with Google
+                </button>
+
+                <!-- Login Link -->
+                <p class="login-link">
+                    Already have an account? <a href="login.html">Log in</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Toggle Password Visibility
+        function togglePasswordVisibility(fieldId) {
+            const passwordInput = document.getElementById(fieldId);
+            const toggleButton = event.target;
+
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                toggleButton.textContent = '🙈';
+            } else {
+                passwordInput.type = 'password';
+                toggleButton.textContent = '👁️';
+            }
+        }
+
+        // Handle Sign Up Form Submission
+        function handleSignUp(event) {
+            event.preventDefault();
+
+            const firstName = document.getElementById('firstName').value;
+            const lastName = document.getElementById('lastName').value;
+            const email = document.getElementById('email').value;
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+
+            // Validate passwords match
+            if (password !== confirmPassword) {
+                alert('❌ Passwords do not match! Please try again.');
+                return;
+            }
+
+            // Validate password strength (basic)
+            if (password.length < 6) {
+                alert('❌ Password must be at least 6 characters long!');
+                return;
+            }
+
+            // Simulate API call
+            console.log('Sign up attempt:', { firstName, lastName, email, username });
+            alert(`Welcome, ${firstName}! 🎉\n\nYour account has been created successfully!\nEmail: ${email}\nUsername: ${username}\n\nThis is a demo. Redirecting to login page...`);
+
+            // In a real application, you would:
+            // 1. Send data to your backend API
+            // 2. Validate the data
+            // 3. Create the user account
+            // 4. Store authentication token
+            // 5. Redirect to dashboard
+
+            // For demo purposes, we'll redirect after a short delay
+            setTimeout(() => {
+                window.location.href = 'login.html';
+            }, 1500);
+        }
+
+        // Handle Google Sign-Up
+        function handleGoogleSignUp() {
+            alert('Google Sign-Up will be implemented here! 🚀');
+            // In a real application, you would:
+            // 1. Initialize Google OAuth 2.0
+            // 2. Handle the authentication response
+            // 3. Create user account in your database
+            // 4. Redirect to dashboard on successful authentication
+        }
+
+        // Add smooth focus effects to form inputs
+        document.querySelectorAll('.form-input').forEach(input => {
+            input.addEventListener('focus', function() {
+                this.style.backgroundColor = 'white';
+            });
+            input.addEventListener('blur', function() {
+                if (!this.value) {
+                    this.style.backgroundColor = '#fafafa';
+                }
+            });
+        });
+
+        // Form validation on input
+        document.getElementById('password').addEventListener('input', function() {
+            const confirmPassword = document.getElementById('confirmPassword');
+            if (confirmPassword.value && this.value !== confirmPassword.value) {
+                confirmPassword.style.borderColor = '#ff4757';
+            } else if (confirmPassword.value) {
+                confirmPassword.style.borderColor = '#2ed573';
+            }
+        });
+
+        document.getElementById('confirmPassword').addEventListener('input', function() {
+            const password = document.getElementById('password');
+            if (this.value && password.value !== this.value) {
+                this.style.borderColor = '#ff4757';
+            } else if (this.value) {
+                this.style.borderColor = '#2ed573';
+            }
+        });
+    </script>
+</body>
+</html>

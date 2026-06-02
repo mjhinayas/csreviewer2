@@ -481,6 +481,7 @@
             text-decoration: none;
             font-weight: 600;
             transition: color 0.3s ease;
+            cursor: pointer;
         }
 
         .login-link a:hover {
@@ -874,13 +875,18 @@
 
                 <!-- Login Link -->
                 <p class="login-link">
-                    Already have an account? <a href="login.html">Log in</a>
+                    Already have an account? <a onclick="goToLogin()">Log in</a>
                 </p>
             </div>
         </div>
     </div>
 
     <script>
+        // Navigate to Login Page
+        function goToLogin() {
+            window.location.href = 'login.html';
+        }
+
         // Toggle Password Visibility
         function togglePasswordVisibility(fieldId) {
             const passwordInput = document.getElementById(fieldId);

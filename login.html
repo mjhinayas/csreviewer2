@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - CSReviewer | Civil Service Exam Reviewer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            width: 100%;
+            height: 100%;
+            font-family: 'Inter', sans-serif;
+            background: white;
+        }
+
+        body {
+            display: flex;
+            overflow: hidden;
+        }
+
+        /* ===== Left Side - Branding & Information ===== */
+        .login-container {
+            display: flex;
+            width: 100%;
+            height: 100vh;
+        }
+
+        .left-section {
+            flex: 1;
+            background: linear-gradient(135deg, #e8f4f8 0%, #d4e8f0 100%);
+            padding: 60px 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Abstract dot pattern background */
+        .left-section::before {
+            content: '';
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(102, 126, 234, 0.1) 1px, transparent 1px);
+            background-size: 50px 50px;
+            top: -100px;
+            right: -100px;
+            pointer-events: none;
+        }
+
+        .left-section::after {
+            content: '';
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(102, 126, 234, 0.08) 1px, transparent 1px);
+            background-size: 40px 40px;
+            bottom: -50px;
+            left: -50px;
+            pointer-events: none;
+        }
+
+        .branding-header {
+            position: relative;
+            z-index: 1;
+        }
+
+        .logo-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 50px;
+        }
+
+        .logo-icon {
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: white;
+            font-weight: 700;
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+        }
+
+        .logo-text {
+            font-size: 20px;
+            font-weight: 700;
+            color: #333;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .main-heading {
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 16px;
+            line-height: 1.2;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .main-description {
+            font-size: 1.05rem;
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 40px;
+            max-width: 400px;
+        }
+
+        /* Features List */
+        .features-list {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+        }
+
+        .feature-icon {
+            width: 50px;
+            height: 50px;
+            background: white;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            flex-shrink: 0;
+            box-shadow: 0 2px 8px rgba(102, 126, 234, 0.1);
+        }
+
+        .feature-content h3 {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: #1a1a1a;
+            margin-bottom: 4px;
+        }
+
+        .feature-content p {
+            font-size: 0.9rem;
+            color: #777;
+            line-height: 1.4;
+        }
+
+        /* Book Stack Illustration */
+        .illustration-container {
+            position: relative;
+            z-index: 1;
+            margin-top: 40px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .book-stack {
+            position: relative;
+            width: 120px;
+            height: 140px;
+        }
+
+        .book {
+            position: absolute;
+            background: white;
+            border-radius: 6px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .book-1 {
+            width: 100px;
+            height: 25px;
+            bottom: 80px;
+            left: 10px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            transform: rotate(-8deg);
+        }
+
+        .book-2 {
+            width: 105px;
+            height: 25px;
+            bottom: 50px;
+            left: 5px;
+            background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+            transform: rotate(4deg);
+        }
+
+        .book-3 {
+            width: 110px;
+            height: 25px;
+            bottom: 20px;
+            left: 0px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            transform: rotate(-3deg);
+        }
+
+        .graduation-cap {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 50px;
+            background: #667eea;
+            border-radius: 50% 50% 40% 40%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            color: white;
+        }
+
+        /* ===== Right Side - Login Card ===== */
+        .right-section {
+            flex: 1;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px;
+        }
+
+        .login-card {
+            width: 100%;
+            max-width: 420px;
+            background: white;
+            border-radius: 20px;
+            padding: 50px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+        }
+
+        .login-card-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .mini-logo {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 26px;
+            color: white;
+            font-weight: 700;
+            margin: 0 auto 20px;
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+        }
+
+        .login-heading {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 8px;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .login-subtitle {
+            font-size: 0.95rem;
+            color: #777;
+            line-height: 1.5;
+        }
+
+        /* Form Group */
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: #333;
+            margin-bottom: 8px;
+        }
+
+        .input-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .input-icon {
+            position: absolute;
+            left: 14px;
+            font-size: 18px;
+            color: #999;
+            pointer-events: none;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 12px 16px 12px 45px;
+            border: 1.5px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 0.95rem;
+            font-family: 'Inter', sans-serif;
+            transition: all 0.3s ease;
+            background: #fafafa;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: #667eea;
+            background: white;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .form-input::placeholder {
+            color: #bbb;
+        }
+
+        /* Password Field Special Styling */
+        .password-field-wrapper {
+            position: relative;
+        }
+
+        .password-toggle {
+            position: absolute;
+            right: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            font-size: 18px;
+            color: #999;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .password-toggle:hover {
+            color: #667eea;
+        }
+
+        .forgot-password-wrapper {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 8px;
+        }
+
+        .forgot-password {
+            font-size: 0.85rem;
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .forgot-password:hover {
+            color: #764ba2;
+        }
+
+        /* Remember Me Checkbox */
+        .checkbox-group {
+            margin: 24px 0;
+        }
+
+        .checkbox-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+        }
+
+        .checkbox-input {
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+            accent-color: #667eea;
+        }
+
+        .checkbox-label {
+            font-size: 0.9rem;
+            color: #333;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        /* Login Button */
+        .login-button {
+            width: 100%;
+            padding: 12px 16px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: 600;
+            font-family: 'Inter', sans-serif;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .login-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        .login-button:active {
+            transform: translateY(0);
+        }
+
+        /* Divider */
+        .divider {
+            text-align: center;
+            margin: 24px 0;
+            position: relative;
+        }
+
+        .divider::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: #e0e0e0;
+        }
+
+        .divider-text {
+            background: white;
+            padding: 0 10px;
+            color: #999;
+            font-size: 0.85rem;
+            position: relative;
+        }
+
+        /* Google Sign-In Button */
+        .google-button {
+            width: 100%;
+            padding: 12px 16px;
+            background: white;
+            color: #333;
+            border: 1.5px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            font-family: 'Inter', sans-serif;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .google-button:hover {
+            background: #f9f9f9;
+            border-color: #d0d0d0;
+        }
+
+        .google-button:active {
+            background: #f0f0f0;
+        }
+
+        /* Signup Link */
+        .signup-link {
+            text-align: center;
+            margin-top: 24px;
+            font-size: 0.9rem;
+            color: #777;
+        }
+
+        .signup-link a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .signup-link a:hover {
+            color: #764ba2;
+        }
+
+        /* ===== Responsive Design ===== */
+        @media (max-width: 1024px) {
+            .main-heading {
+                font-size: 2.2rem;
+            }
+
+            .left-section {
+                padding: 40px 30px;
+            }
+
+            .login-card {
+                padding: 40px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .login-container {
+                flex-direction: column;
+            }
+
+            .left-section {
+                flex: 0.8;
+                padding: 40px 30px;
+                justify-content: center;
+            }
+
+            .right-section {
+                flex: 1;
+                padding: 30px 20px;
+                background: #f5f5f5;
+            }
+
+            .logo-brand {
+                margin-bottom: 30px;
+            }
+
+            .main-heading {
+                font-size: 2rem;
+                margin-bottom: 12px;
+            }
+
+            .main-description {
+                font-size: 0.95rem;
+                margin-bottom: 30px;
+            }
+
+            .features-list {
+                gap: 16px;
+            }
+
+            .illustration-container {
+                margin-top: 30px;
+            }
+
+            .login-card {
+                max-width: 100%;
+                margin-top: 20px;
+                border-radius: 16px;
+            }
+
+            .login-heading {
+                font-size: 1.6rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .login-container {
+                height: auto;
+                min-height: 100vh;
+            }
+
+            .left-section {
+                flex: none;
+                padding: 30px 20px;
+                min-height: 50vh;
+            }
+
+            .right-section {
+                flex: none;
+                padding: 20px;
+                background: white;
+                min-height: 50vh;
+            }
+
+            .main-heading {
+                font-size: 1.6rem;
+            }
+
+            .main-description {
+                font-size: 0.9rem;
+            }
+
+            .features-list {
+                gap: 12px;
+            }
+
+            .feature-icon {
+                width: 40px;
+                height: 40px;
+                font-size: 18px;
+            }
+
+            .feature-content h3 {
+                font-size: 0.95rem;
+            }
+
+            .feature-content p {
+                font-size: 0.8rem;
+            }
+
+            .login-card {
+                padding: 30px 20px;
+                max-width: 100%;
+            }
+
+            .login-heading {
+                font-size: 1.4rem;
+            }
+
+            .login-subtitle {
+                font-size: 0.85rem;
+            }
+
+            .form-input {
+                padding: 11px 14px 11px 40px;
+                font-size: 0.9rem;
+            }
+
+            .login-button {
+                padding: 11px 14px;
+                font-size: 0.95rem;
+            }
+
+            .google-button {
+                padding: 11px 14px;
+                font-size: 0.85rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <!-- Left Section - Branding -->
+        <div class="left-section">
+            <div class="branding-header">
+                <!-- Logo & Brand -->
+                <div class="logo-brand">
+                    <div class="logo-icon">📚</div>
+                    <div class="logo-text">CSReviewer</div>
+                </div>
+
+                <!-- Main Heading -->
+                <h1 class="main-heading">Civil Service Exam Reviewer</h1>
+
+                <!-- Description -->
+                <p class="main-description">Your all-in-one platform to review, practice, and pass the Civil Service Examination.</p>
+
+                <!-- Features List -->
+                <div class="features-list">
+                    <div class="feature-item">
+                        <div class="feature-icon">📖</div>
+                        <div class="feature-content">
+                            <h3>Quality Lessons</h3>
+                            <p>Easy to understand study materials</p>
+                        </div>
+                    </div>
+
+                    <div class="feature-item">
+                        <div class="feature-icon">✏️</div>
+                        <div class="feature-content">
+                            <h3>Practice Quizzes</h3>
+                            <p>Test your knowledge with quizzes</p>
+                        </div>
+                    </div>
+
+                    <div class="feature-item">
+                        <div class="feature-icon">📊</div>
+                        <div class="feature-content">
+                            <h3>Track Progress</h3>
+                            <p>Monitor your scores and improvement</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Book Stack Illustration -->
+            <div class="illustration-container">
+                <div class="book-stack">
+                    <div class="book book-1"></div>
+                    <div class="book book-2"></div>
+                    <div class="book book-3"></div>
+                    <div class="graduation-cap">🎓</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Section - Login Card -->
+        <div class="right-section">
+            <div class="login-card">
+                <!-- Card Header -->
+                <div class="login-card-header">
+                    <div class="mini-logo">📚</div>
+                    <h2 class="login-heading">Welcome Back!</h2>
+                    <p class="login-subtitle">Log in to continue your learning journey.</p>
+                </div>
+
+                <!-- Login Form -->
+                <form onsubmit="handleLogin(event)">
+                    <!-- Email Input -->
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <div class="input-wrapper">
+                            <span class="input-icon">👤</span>
+                            <input
+                                type="email"
+                                id="email"
+                                class="form-input"
+                                placeholder="Enter your email"
+                                required
+                            >
+                        </div>
+                    </div>
+
+                    <!-- Password Input -->
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <div class="password-field-wrapper">
+                            <div class="input-wrapper">
+                                <span class="input-icon">🔒</span>
+                                <input
+                                    type="password"
+                                    id="password"
+                                    class="form-input"
+                                    placeholder="Enter your password"
+                                    required
+                                >
+                                <button
+                                    type="button"
+                                    class="password-toggle"
+                                    onclick="togglePasswordVisibility()"
+                                >
+                                    👁️
+                                </button>
+                            </div>
+                        </div>
+                        <div class="forgot-password-wrapper">
+                            <a href="#" class="forgot-password">Forgot password?</a>
+                        </div>
+                    </div>
+
+                    <!-- Remember Me Checkbox -->
+                    <div class="checkbox-group">
+                        <label class="checkbox-wrapper">
+                            <input type="checkbox" class="checkbox-input">
+                            <span class="checkbox-label">Remember me</span>
+                        </label>
+                    </div>
+
+                    <!-- Login Button -->
+                    <button type="submit" class="login-button">
+                        🔓 Log In
+                    </button>
+                </form>
+
+                <!-- Divider -->
+                <div class="divider">
+                    <span class="divider-text">or</span>
+                </div>
+
+                <!-- Google Sign-In Button -->
+                <button class="google-button" onclick="handleGoogleSignIn()">
+                    <span>🔵</span> Continue with Google
+                </button>
+
+                <!-- Signup Link -->
+                <p class="signup-link">
+                    Don't have an account? <a href="#">Sign up</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Toggle Password Visibility
+        function togglePasswordVisibility() {
+            const passwordInput = document.getElementById('password');
+            const toggleButton = document.querySelector('.password-toggle');
+
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                toggleButton.textContent = '🙈';
+            } else {
+                passwordInput.type = 'password';
+                toggleButton.textContent = '👁️';
+            }
+        }
+
+        // Handle Login Form Submission
+        function handleLogin(event) {
+            event.preventDefault();
+
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            // Simulate API call
+            console.log('Login attempt:', { email, password });
+            alert(`Welcome back, ${email}! 🎉\n\nThis is a demo. Redirecting to dashboard...`);
+
+            // In a real application, you would:
+            // 1. Send credentials to your backend API
+            // 2. Validate the user
+            // 3. Store authentication token
+            // 4. Redirect to dashboard
+
+            // For demo purposes, we'll redirect after a short delay
+            setTimeout(() => {
+                window.location.href = 'index.html'; // Redirect to main page
+            }, 1500);
+        }
+
+        // Handle Google Sign-In
+        function handleGoogleSignIn() {
+            alert('Google Sign-In will be implemented here! 🚀');
+            // In a real application, you would:
+            // 1. Initialize Google OAuth 2.0
+            // 2. Handle the authentication response
+            // 3. Redirect to dashboard on successful authentication
+        }
+
+        // Add focus effects to form inputs
+        document.querySelectorAll('.form-input').forEach(input => {
+            input.addEventListener('focus', function() {
+                this.style.backgroundColor = 'white';
+            });
+            input.addEventListener('blur', function() {
+                if (!this.value) {
+                    this.style.backgroundColor = '#fafafa';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
